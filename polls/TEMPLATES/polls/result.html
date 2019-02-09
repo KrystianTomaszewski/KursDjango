@@ -1,3 +1,9 @@
+{% extends 'polls/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
 <h1>To są rezultaty dla pytania o treści:</h1>
 <h2>{{question.question_text}}</h2>
 <ul>
@@ -8,3 +14,8 @@
     {% endfor %}
 </ul>
 <a href="{% url 'polls:detail' question.id %}">Zagłosuj ponownie</a>
+
+<script>
+    window.alert("{{question.question_text}}")
+</script>
+{% endblock %}

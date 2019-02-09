@@ -1,3 +1,9 @@
+{% extends 'polls/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
 <h1>{{question.question_text}}</h1>
 
 {% if error_message %}
@@ -13,6 +19,8 @@
     <label for="choice{{forloop.counter}}">
         {{choice.choice_text}}
     </label>
+    <a href="{% url 'polls:choice' choice.id %}"><b>Edit</b></a>
     {%endfor%}
     <input type="submit" value="Vote">
 </form>
+{% endblock %}

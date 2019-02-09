@@ -1,0 +1,8 @@
+li a{
+    color: green;
+}
+
+body {
+background: white url("images/tlo.jpg") no-repeat;
+background-size: cover;
+}
