@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'mysite.apps.MyAdminConfig',
+    'catalogs.apps.CatalogsConfig',
     'polls.apps.PollsConfig',
     #'django.contrib.admin',
     'django.contrib.auth',
