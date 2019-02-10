@@ -7,6 +7,16 @@ from django.urls import reverse
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from rest_framework import viewsets,permissions
+from .serializers import QuestionSerializer, ChoiceSerializer
+
+class QuestionViewsets(viewsets.ModelViewSet):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
+class ChoiceViewsets(viewsets.ModelViewSet):
+    queryset = Choice.objects.all()
+    serializer_class = ChoiceSerializer
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'

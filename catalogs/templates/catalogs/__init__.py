@@ -1,0 +1,1 @@
+from polls.TEMPLATES import polls

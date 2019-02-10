@@ -15,9 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from polls.urls import router as polls_router
+from catalogs.urls import router as catalogs_router
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+def_router = routers.DefaultRouter()
+def_router.registry.extend(polls_router.registry)
+def_router.registry.extend(catalogs_router.registry)
 
 urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    path('', include('catalogs.urls'))
+    path('', include('catalogs.urls')),
+    path('api/',include(def_router.urls)),
+    path('api/auth', include('rest_framework.urls')),
+    path(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
 ]

@@ -1,10 +1,11 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.http import HttpResponse
+from django.views import generic
 from .models import Category
+from rest_framework import viewsets
+from .serializers import CategorySerializer
 
-def index(request):
-    categories = Category.objects.all()
-    beauty_form = [cat.name + ", " for cat in categories]
-    return HttpResponse(beauty_form)
+class CategoryViewsets(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class CategoryList(generic.ListView):
+    model = Category
