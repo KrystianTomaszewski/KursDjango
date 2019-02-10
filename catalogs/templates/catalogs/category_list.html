@@ -11,3 +11,31 @@
 </table>
 
 {% endblock %}
+
+{% block extrascripts %}
+<script>
+    var get_questions = function(token) {
+        console.info(token);
+        $.ajax({
+            url: "/api/questions",
+            type: 'GET',
+            headers: {"Authorization": "Bearer " + token}
+        })
+            .done(function (data) {
+                console.log(data)
+            })
+    };
+
+
+    $.post("/api/token/", {username:"krystian", password:"zaq12wsx"})
+        .done(function (data) {
+            var token = data.access;
+            get_questions(token);
+         })
+         .fail(function (data){
+            console.warn(data);
+            window.alert("Problem z logowaniem")
+         });
+
+</script>
+{% endblock %}

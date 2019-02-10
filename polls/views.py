@@ -11,6 +11,7 @@ from rest_framework import viewsets,permissions
 from .serializers import QuestionSerializer, ChoiceSerializer
 
 class QuestionViewsets(viewsets.ModelViewSet):
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
 

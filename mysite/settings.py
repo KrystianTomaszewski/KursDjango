@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     #'django.contrib.admin',
     'rest_framework',
+    'rest_framework_swagger',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -126,8 +127,6 @@ STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }

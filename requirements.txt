@@ -3,3 +3,4 @@ djangorestframework
 markdown
 django-filters
 djangorestframework-simplejwt
+django-rest-swagger
